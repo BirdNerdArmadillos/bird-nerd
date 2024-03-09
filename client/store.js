@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import tileReducer from './slices/tileSlice.js';
+import postContainerReducer from './slices/postContainerSlice.js';
+import appReducer from './slices/appSlice.js';
 
 export default configureStore({
   reducer: {
-    // tiles: tileReducer,
+    postContainer: postContainerReducer,
+    app: appReducer,
   },
 });
