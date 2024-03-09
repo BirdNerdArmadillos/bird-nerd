@@ -1,6 +1,6 @@
 import React from 'react';
-import CreateNewPost from './CreateNewPost';
-import PostContainer from './PostContainer';
+import CreateNewPost from './CreateNewPost.jsx';
+import PostContainer from './PostContainer.jsx';
 
 const MainContainer = () => {
   return (
