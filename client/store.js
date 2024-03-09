@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postContainerReducer from './slices/tileSlice.js';
+import postContainerReducer from './slices/postContainerSlice.js';
 
 export default configureStore({
   reducer: {
