@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 export const postContainerSlice = createSlice({
   name: 'postContainer',
   initialState: {
-    posts: {
+    posts: [
       // --- example ---
-      // 0: {_id:0,textContent:'hello',user:'marselena'}
-      // 1: {_id:1,textContent:'bye',user:'lillian'}
-    },
+      // {_id:0,textContent:'hello',user:'marselena'},
+      // {_id:1,textContent:'bye',user:'lillian'}
+    ],
     selected: null,
   },
   reducers: {
