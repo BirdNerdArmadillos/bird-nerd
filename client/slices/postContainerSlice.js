@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const postDisplaySlice = createSlice({
-  name: 'postDisplay',
+export const postContainerSlice = createSlice({
+  name: 'postContainer',
   initialState: {
     posts: {
       // --- example ---
@@ -11,6 +11,7 @@ export const postDisplaySlice = createSlice({
     selected: null,
   },
   reducers: {
+    // Refresh the list of all posts
     refresh: (state) => {
       // send a get request to the database for a list of all posts
       async function getPosts() {
@@ -20,7 +21,7 @@ export const postDisplaySlice = createSlice({
       const posts = getPosts();
       return { ...state, posts };
     },
-    // Select a single post out of the display
+    // Select a single post from the container
     select: (state, action) => {
       // get id from payload and store it in state as selected
       const selected = ({ _id } = action.payload);
@@ -29,6 +30,6 @@ export const postDisplaySlice = createSlice({
   },
 });
 
-export const { refresh } = postDisplaySlice.actions;
+export const { refresh } = postContainerSlice.actions;
 
-export default postDisplaySlice.reducer;
+export default postContainerSlice.reducer;
