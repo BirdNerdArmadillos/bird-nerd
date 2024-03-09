@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post.jsx';
 
-const Display = () => {
+const PostContainer = () => {
   return (
     <section>
       <Post />
@@ -9,4 +9,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default PostContainer;
