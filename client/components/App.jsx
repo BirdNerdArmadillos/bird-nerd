@@ -1,8 +1,15 @@
 import React from 'react';
-// import Board from './Board.jsx';
+import CreateNewPost from './CreateNewPost.jsx';
 
 const App = () => {
-  // return <Board />;
+  return (
+    <div>
+      <div>
+        <CreateNewPost />
+      </div>
+      <div></div> //area for middle board
+    </div>
+  );
 };
 
 export default App;
