@@ -1,7 +1,7 @@
 import React from 'react';
 import CreateNewPost from './CreateNewPost.jsx';
 // TODO: import components that the frontend team creates
-import { useSelector } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.app.isLoggedIn);
