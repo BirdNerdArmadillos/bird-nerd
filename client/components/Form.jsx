@@ -18,8 +18,8 @@ const Form = () => {
     <div>
       <h2>Sign In</h2>
       <form>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
         <button type="submit">Sign In</button>
       </form>
     </div>
