@@ -9,12 +9,12 @@ export const appSlice = createSlice({
   reducers: {
     logIn: (state, action) => {
       // retrieve current user from payload
-      const currentUser = ({ user } = action.payload);
+      const currentUser = action.payload;
       // switch boolean to true
       const isLoggedIn = true;
       return { ...state, currentUser, isLoggedIn };
     },
-    logOut: (state, action) => {
+    logOut: (state) => {
       const currentUser = null;
       const isLoggedIn = false;
       return { ...state, currentUser, isLoggedIn };

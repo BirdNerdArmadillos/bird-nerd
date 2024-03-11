@@ -1,4 +1,4 @@
-const User = require('../modelDB');
+const { User } = require('../modelDB.js');
 const bcrypt = require('bcryptjs');
 
 const userController = {};
@@ -13,7 +13,10 @@ userController.createUser = (req, res, next) => {
     });
   }
   User.create({ username, password })
-    .then(() => next())
+    .then((data) => {
+      res.locals.username = data.username;
+      next();
+    })
     .catch((err) => {
       return next({
         log: 'Error occurred in create user',
@@ -24,6 +27,7 @@ userController.createUser = (req, res, next) => {
 };
 
 userController.verifyUser = (req, res, next) => {
+  console.log('verifying user');
   const { username, password } = req.body;
   if (!username || !password) {
     return next({
@@ -32,25 +36,25 @@ userController.verifyUser = (req, res, next) => {
       message: { err: 'An error occurred' },
     });
   }
-  User.findOne({ username }, (err, user) => {
-    if (err) {
-      return next({
-        log: 'Error occurred in create user',
-        status: 500,
-        message: { err: 'An error occurred' },
-      });
-    } else if (!user) {
-      res.redirect('/signup');
-    } else {
-      bcrypt.compare(password, user.password).then((result) => {
+  User.findOne({ username })
+    .then((data) => {
+      bcrypt.compare(password, data.password).then((result) => {
         if (!result) {
+          // TODO change state to signup
           res.redirect('/signup');
         } else {
+          res.locals.username = data.username;
           return next();
         }
       });
-    }
-  });
+    })
+    .catch((err) => {
+      return next({
+        log: 'Error occurred in verifyUser',
+        status: 500,
+        message: { err: 'An error occurred' },
+      });
+    });
 };
 
 module.exports = userController;
