@@ -31,6 +31,8 @@ const CreateNewPost = () => {
         throw new Error('Failed to create new post')
       }
       
+    } catch (error){
+      console.log(error);
     }
   };
 

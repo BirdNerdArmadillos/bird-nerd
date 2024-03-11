@@ -46,18 +46,19 @@ const commentSchema = new Schema({
 
 // user schema;
 const postSchema = new Schema({
-  // username: { type: String, required: true },
-  username_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
-  },
-                              
+  username: { type: String, required: true },
+  // username_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'user',
+  // },                          
   // password: { type: String, required: true },
-  textContent: String,
+  postContent: String,
   birdName: String,
   dateStamp: String,
   location: String,
   weatherConditions: String,
+  date: String,
+  time: String,
   comments: [{ type: Schema.Types.ObjectId, ref: 'comment' }]
 });
 

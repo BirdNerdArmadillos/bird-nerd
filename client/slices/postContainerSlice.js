@@ -14,12 +14,21 @@ export const postContainerSlice = createSlice({
     // Refresh the list of all posts
     refresh: (state) => {
       // send a get request to the database for a list of all posts
-      async function getPosts() {
-        const response = await fetch('http://localhost:3000/api/posts'); // TODO: replace this endpoint with whatever the server team decides
-        return await response.json();
-      }
-      const posts = getPosts();
-      return { ...state, posts };
+      // async function getPosts() {
+      //   const response = await fetch('http://localhost:3000/api/posts'); // TODO: replace this endpoint with whatever the server team decides
+      //   return await response.json();
+      // }
+      // const posts = getPosts();
+      // return { ...state, posts };
+      fetch('http://localhost:3000/display_all_posts')
+        .then((results) => {
+          results.json();
+        })
+        .then((json) => {
+          const posts = json;
+          return { ...state, posts };
+        })
+        .catch((err) => console.log(err));
     },
     // Select a single post from the container
     select: (state, action) => {

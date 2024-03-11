@@ -25,17 +25,7 @@ app.get('/', (req, res) => {
 // post req to create username and password; SIGN UP
 // get req to find username and password in db and match it; SIGN IN
 // get req to find username and send it to client;
-app.post('/signup', (req, res) => {
-  const { username, password } = req.body;
-  User.create({username, password})
-    .then((data) => {
-      res.locals = data;
-      return res.status(200).json(res.locals);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-})
+
 
 // display all posts;
 app.get('/display_all_posts', postController.displayAllPosts, (req,res) => {
@@ -49,7 +39,12 @@ app.post('/newpost', postController.createNewPost, (req, res) => {
 });
 
 // edit the post;
-app.patch('/post', postController.editPost, (req, res) => {
+app.patch('/edit_post', postController.editPost, (req, res) => {
+  return res.status(201).json(res.locals.data);
+});
+
+// delete post;
+app.delete('/delete_post', postController.deletePost, (req, res) => {
   return res.status(201).json(res.locals.data);
 });
 
