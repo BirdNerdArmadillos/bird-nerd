@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+$DeepGreen: #114232;
+$GrassGreen: #87a922;
+$Yellow: #fcdc2a;
+$PaleYellow: #f9f8d1;
+
+$font: 'Open Sans', sans-serif;
+
+body {
+  background-color: $PaleYellow;
+  margin: 0vw;
+}
+
+button {
+  color: $PaleYellow;
+  background-color: $DeepGreen;
+  font-family: $font;
+  font-size: 5vw;
+  font-size: larger;
+  border: none;
+  &:hover {
+    background-color: $GrassGreen;
+    border-style: none;
+    color: $PaleYellow;
+    border: none;
+  }
+  text-decoration: none;
+  padding: 0.3vw 1.5vw;
+  border-radius: 1rem;
+  margin: 1vw;
+}
+
+.form-container {
+  // background-color: $Yellow;
+  font-family: $font;
+  color: $DeepGreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-form,
+.sign-up-form {
+  margin: 4vw;
+}
+
+.sign-in-username,
+.sign-up-username {
+  border: none;
+  padding: 2vw;
+  margin: 1vw;
+}
+
+.sign-in-password,
+.sign-up-password {
+  border: none;
+  padding: 2vw;
+  margin: 1vw;
+}
+
+.sign-up-wrap,
+.sign-in-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+// .post {
+//   color: $Yellow;
+//   border: 1px solid black;
+// }
+
+.sign-up-text,
+.sign-in-text {
+  color: $DeepGreen;
+  // border-radius: 10px;
+  text-align: center;
+}
+
+.time-box,
+.date-box,
+.weather-box,
+.location-box,
+.species-box,
+.textarea-box,
+.title-box {
+  border: none;
+  margin: 1vw;
+  width: 10vw;
+}
