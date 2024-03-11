@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+var cors = require('cors');
 const { User, Comment, Post } = require('./modelDB');
 
 // const userController = require('./controllers/userController');
@@ -27,21 +28,20 @@ app.get('/', (req, res) => {
 // get req to find username and send it to client;
 app.post('/signup', (req, res) => {
   const { username, password } = req.body;
-  User.create({username, password})
+  User.create({ username, password })
     .then((data) => {
       res.locals = data;
       return res.status(200).json(res.locals);
     })
     .catch((err) => {
       console.log(err);
-    })
-})
+    });
+});
 
 // display all posts;
-app.get('/display_all_posts', postController.displayAllPosts, (req,res) => {
+app.get('/display_all_posts', postController.displayAllPosts, (req, res) => {
   res.status(200).json(res.locals.data);
-})
-
+});
 
 // post request to /post to create a new post;
 app.post('/newpost', postController.createNewPost, (req, res) => {
