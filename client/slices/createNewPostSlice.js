@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const createNewPostSlice = createSlice({
+const createNewPostSlice = createSlice({
   name: 'createNewPost',
+
   initialState: {
     body: '',
     nameOfBird: '',
@@ -10,6 +11,7 @@ export const createNewPostSlice = createSlice({
     date: '',
     time: '',
   },
+
   reducers: {
     updateBody: (state, action) => {
       state.body = action.payload;
