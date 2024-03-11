@@ -7,6 +7,8 @@ import {
   updateWeather,
   updateDate,
   updateTime,
+  updateTitle,
+  reset,
 } from '../slices/createNewPostSlice';
 
 const CreateNewPost = () => {
@@ -22,7 +24,7 @@ const CreateNewPost = () => {
     try {
       const response = await fetch('/api/newpost', {
         method: 'POST',
-        header: {
+        headers: {
           'Content Type': 'application/json',
         },
         body: JSON.stringify(createNewPostState),
@@ -30,27 +32,39 @@ const CreateNewPost = () => {
       if (!response.ok) {
         throw new Error('Failed to create new post');
       }
-    } catch (error){
-      console.log(error);
+      alert('Created post successfully');
+      dispatch(reset());
+    } catch (error) {
+      console.log('Error creating post: ', error);
+
     }
 
   };
 
   return (
-    <>
-      <div className='textarea'>
+    <form onSubmit={handleSubmit}>
+      <div className="textarea">
         <textarea
-          className='textarea-box'
-          value={createNewPostState.body}
+          className="textarea-box"
+          value={createNewPostState.postContent}
           onChange={(e) => handleClientInput(updateBody, e.target.value)}
         />
       </div>
-      <div className='species'>
+      <div className="title">
         <input
-          className='species-box'
-          type='text'
-          placeholder='Name of the bird / Species'
-          value={createNewPostState.nameOfBird}
+          className="title-box"
+          type="text"
+          placeholder="title"
+          value={createNewPostState.title}
+          onChange={(e) => handleClientInput(updateTitle, e.target.value)}
+        />
+      </div>
+      <div className="species">
+        <input
+          className="species-box"
+          type="text"
+          placeholder="Name of the bird / Species"
+          value={createNewPostState.birdName}
           onChange={(e) => handleClientInput(updateNameOfBird, e.target.value)}
         />
       </div>
@@ -90,8 +104,8 @@ const CreateNewPost = () => {
           onChange={(e) => handleClientInput(updateTime, e.target.value)}
         />
       </div>
-      <button>Create Post</button>
-    </>
+      <button type="submit">Create Post</button>
+    </form>
   );
 };
 

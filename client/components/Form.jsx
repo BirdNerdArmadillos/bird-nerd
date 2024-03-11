@@ -4,33 +4,48 @@ const Form = () => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const signUpForm = () => (
-    <div>
-      <h2>Sign Up</h2>
-      <form method='post' action='localhost:3000/auth/signup'>
-        <input name='username' type='text' placeholder='Username' required />
+    <div className="sign-up">
+      <h2 className="sign-up-text">Sign Up</h2>
+      <form className="sign-up-form">
         <input
-          name='password'
-          type='password'
-          placeholder='Password'
+          className="sign-up-username"
+          type="text"
+          placeholder="Username"
           required
         />
-        <button type='submit'>Sign Up</button>
+        <input
+          className="sign-up-password"
+          type="password"
+          placeholder="Password"
+          require
+        />
+        <button className="sign-up-button" type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );
 
   const signInForm = () => (
-    <div>
-      <h2>Sign In</h2>
-      <form method='get' action='localhost:3000/auth/signin'>
-        <input name='username' type='text' placeholder='Username' required />
+    <div className="sign-in">
+      <h2 className="sign-in-text">Sign In</h2>
+      <form className="sign-in-form">
         <input
-          name='password'
-          type='password'
-          placeholder='Password'
+          className="sign-in-username"
+          type="text"
+          placeholder="Username"
           required
         />
-        <button type='submit'>Sign In</button>
+        <input
+          className="sign-in-password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <button className="sign-in-button" type="submit">
+          Sign In
+        </button>
+
       </form>
     </div>
   );
@@ -50,7 +65,7 @@ const Form = () => {
   return (
     <div>
       {renderForm()}
-      <button onClick={switchForm}>
+      <button className="switch-button" onClick={switchForm}>
         {isSignUp
           ? 'Already have an account? Sign In'
           : "Don't have an account? Sign Up"}
