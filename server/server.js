@@ -8,17 +8,19 @@ const postController = require('./postController');
 const app = express();
 const PORT = 3000;
 
+const authRouter = require('./rotues/auth');
+
 app.use(express.json());
 app.use(express.urlencoded());
-
 
 // statically serve everything in the build folder on the route '/build'
 app.use('/build', express.static(path.join(__dirname, '../build')));
 // serve index.html on the route '/'
+
+app.use('/auth', authRouter);
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
-
 
 // post req to create username and password; SIGN UP
 // get req to find username and password in db and match it; SIGN IN
@@ -56,8 +58,6 @@ app.post('/comment', postController.addComment, (req, res) => {
   return res.status(201).json(res.locals.comment);
 });
 
-
-
 // global error handler;
 app.use((err, req, res, next) => {
   const defaultErr = {
@@ -69,6 +69,5 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
-
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`));
