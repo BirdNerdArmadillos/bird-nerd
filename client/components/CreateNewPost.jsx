@@ -30,7 +30,10 @@ const CreateNewPost = () => {
       if (!response.ok) {
         throw new Error('Failed to create new post');
       }
-    } catch {}
+    } catch (error){
+      console.log(error);
+    }
+
   };
 
   return (

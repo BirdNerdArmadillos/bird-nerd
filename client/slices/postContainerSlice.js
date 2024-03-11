@@ -12,6 +12,7 @@ export const postContainerSlice = createSlice({
   },
   reducers: {
     // Refresh the list of all posts
+
     refresh: (state, action) => {
       const posts = action.payload;
       return { ...state, posts };

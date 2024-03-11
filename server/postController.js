@@ -8,18 +8,20 @@ const postController = {};
 
 // create a new post and return it back to the client;
 postController.createNewPost = (req, res, next) => {
-  const {username, textContent, birdName, location, weatherConditions} = req.body;
+  const {username, postContent, birdName, location, weatherConditions, date, time} = req.body;
   const dateStamp = new Date().toLocaleString();
-  Post.create({ username, textContent, birdName, dateStamp, location, weatherConditions })
+  Post.create({ username, postContent, birdName, dateStamp, location, weatherConditions, date, time })
     .then((data) => {
-      const { username, textContent, birdName, dateStamp, location, weatherConditions } = data;
+      const { username, postContent, birdName, dateStamp, location, weatherConditions, date, time } = data;
       res.locals = {
          username: username, 
-         textContent: textContent, 
+         postContent: postContent, 
          birdName: birdName, 
          dateStamp: dateStamp, 
          location: location, 
-         weatherConditions: weatherConditions
+         weatherConditions: weatherConditions,
+         date: date,
+         time: time
       };
       return next();
     })
@@ -36,10 +38,10 @@ postController.createNewPost = (req, res, next) => {
 
 // edit existing post;
 postController.editPost = (req, res, next) => {
-  const { _id, newTextContent} = req.body;
+  const { _id, newPostContent} = req.body;
 
   // if request from client missing post text error handling;
-  if (newTextContent === undefined) {
+  if (newPostContent === undefined) {
     const error = {
       status: 406,
       log: 'Missing input from client',
@@ -48,7 +50,7 @@ postController.editPost = (req, res, next) => {
     return next(error);
   }
 
-  Post.findOneAndUpdate({_id: _id}, {textContent: newTextContent}, {new: true})
+  Post.findOneAndUpdate({_id: _id}, {postContent: newPostContent}, {new: true})
     .then((data) => {
       res.locals.data = data;
       return next();
@@ -62,6 +64,27 @@ postController.editPost = (req, res, next) => {
       };
       return next(error);
     })
+};
+
+// delete a post;
+postController.deletePost = (req, res, next) => {
+  const { _id } = req.body;
+  console.log(1);
+  Post.findOneAndDelete({ _id })
+    .then((data) => {
+      console.log('post deleted: ' + data);
+      return next();
+    })
+    .catch((err) => {
+      console.log(err.message);
+      console.log(2);
+      const error = {
+        status: 406,
+        log: 'Content not found/ not deleted',
+        message: 'Post was not deleted'
+      };
+      return next(error);
+    });
 };
 
 // add a comment to a post;
