@@ -19,7 +19,6 @@ const Post = ({ post }) => {
   const handleClick = () => {
     dispatch(setActivePost(post));
   };
-
   return (
     <div className="post" onClick={handleClick}>
       <h2>{post.user}</h2>

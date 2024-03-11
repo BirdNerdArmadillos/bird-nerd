@@ -36,7 +36,9 @@ const CreateNewPost = () => {
       dispatch(reset());
     } catch (error) {
       console.log('Error creating post: ', error);
+
     }
+
   };
 
   return (
@@ -66,38 +68,38 @@ const CreateNewPost = () => {
           onChange={(e) => handleClientInput(updateNameOfBird, e.target.value)}
         />
       </div>
-      <div className="location">
+      <div className='location'>
         <input
-          className="location-box"
-          type="text"
-          placeholder="Where did you see this bird?"
+          className='location-box'
+          type='text'
+          placeholder='Where did you see this bird?'
           value={createNewPostState.location}
           onChange={(e) => handleClientInput(updateLocation, e.target.value)}
         />
       </div>
-      <div className="weather">
+      <div className='weather'>
         <input
-          className="weather-box"
-          type="text"
-          placeholder="What wsa the weather like?"
+          className='weather-box'
+          type='text'
+          placeholder='What wsa the weather like?'
           value={createNewPostState.weather}
           onChange={(e) => handleClientInput(updateWeather, e.target.value)}
         />
       </div>
-      <div className="date">
+      <div className='date'>
         <input
-          className="date-box"
-          type="text"
-          placeholder="Date"
+          className='date-box'
+          type='text'
+          placeholder='Date'
           value={createNewPostState.date}
           onChange={(e) => handleClientInput(updateDate, e.target.value)}
         />
       </div>
-      <div className="time">
+      <div className='time'>
         <input
-          className="time-box"
-          type="text"
-          placeholder="Time"
+          className='time-box'
+          type='text'
+          placeholder='Time'
           value={createNewPostState.time}
           onChange={(e) => handleClientInput(updateTime, e.target.value)}
         />
