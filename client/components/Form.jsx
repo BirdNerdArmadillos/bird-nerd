@@ -6,10 +6,15 @@ const Form = () => {
   const signUpForm = () => (
     <div>
       <h2>Sign Up</h2>
-      <form>
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" require />
-        <button type="submit">Sign Up</button>
+      <form method='post' action='localhost:3000/auth/signup'>
+        <input name='username' type='text' placeholder='Username' required />
+        <input
+          name='password'
+          type='password'
+          placeholder='Password'
+          required
+        />
+        <button type='submit'>Sign Up</button>
       </form>
     </div>
   );
@@ -17,10 +22,15 @@ const Form = () => {
   const signInForm = () => (
     <div>
       <h2>Sign In</h2>
-      <form>
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">Sign In</button>
+      <form method='get' action='localhost:3000/auth/signin'>
+        <input name='username' type='text' placeholder='Username' required />
+        <input
+          name='password'
+          type='password'
+          placeholder='Password'
+          required
+        />
+        <button type='submit'>Sign In</button>
       </form>
     </div>
   );
@@ -39,7 +49,6 @@ const Form = () => {
 
   return (
     <div>
-      <p>this is form component</p>
       {renderForm()}
       <button onClick={switchForm}>
         {isSignUp
