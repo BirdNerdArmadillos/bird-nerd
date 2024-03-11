@@ -20,9 +20,9 @@ const Post = ({ post }) => {
     dispatch(setActivePost(post));
   };
   return (
-    <div className="post" onClick={handleClick}>
-      <h2>{post.user}</h2>
-      <p>{post.title}</p>
+    <div className='post' onClick={handleClick}>
+      <h2>{post.username}</h2>
+      <p>{post.postContent}</p>
     </div>
   );
 };

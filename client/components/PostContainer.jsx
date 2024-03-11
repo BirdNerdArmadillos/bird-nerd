@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const PostContainer = () => {
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.postContainer.posts);
 
   useEffect(() => {
     fetch('http://localhost:3000/display_all_posts')
@@ -15,9 +16,8 @@ const PostContainer = () => {
         console.log(json);
         dispatch(refresh(json));
       });
-  }, []);
+  }, [posts]);
 
-  const posts = useSelector((state) => state.postContainer.posts);
   // const componentsArray = [];
   // posts.forEach((post, i) => {
   //   componentsArray.push(
@@ -31,23 +31,22 @@ const PostContainer = () => {
   //   );
   // });
 
-//   const componentsArray = [];
-//   posts.forEach((post, i) => {
-//     componentsArray.push(
-//       <Post
-//         key={post._id}
-//         birdName={post.birdName}
-//         date={post.date}
-//         dateStamp={post.dateStamp}
-//         location={post.location}
-//         postContent={post.postContent}
-//         time={post.time}
-//         username={post.username}
-//         weatherConditions={post.weatherConditions}
-//       />
-//     );
-//   });
-
+  //   const componentsArray = [];
+  //   posts.forEach((post, i) => {
+  //     componentsArray.push(
+  //       <Post
+  //         key={post._id}
+  //         birdName={post.birdName}
+  //         date={post.date}
+  //         dateStamp={post.dateStamp}
+  //         location={post.location}
+  //         postContent={post.postContent}
+  //         time={post.time}
+  //         username={post.username}
+  //         weatherConditions={post.weatherConditions}
+  //       />
+  //     );
+  //   });
 
   // return <section>{componentsArray}</section>;
   return (

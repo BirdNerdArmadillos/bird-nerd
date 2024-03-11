@@ -14,6 +14,7 @@ import {
 const CreateNewPost = () => {
   const dispatch = useDispatch();
   const createNewPostState = useSelector((state) => state.createNewPost);
+  const currentUser = useSelector((state) => state.app.currentUser);
 
   const handleClientInput = (actionCreator, value) => {
     dispatch(actionCreator(value));
@@ -36,34 +37,32 @@ const CreateNewPost = () => {
       dispatch(reset());
     } catch (error) {
       console.log('Error creating post: ', error);
-
     }
-
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="textarea">
+      <div className='textarea'>
         <textarea
-          className="textarea-box"
+          className='textarea-box'
           value={createNewPostState.postContent}
           onChange={(e) => handleClientInput(updateBody, e.target.value)}
         />
       </div>
-      <div className="title">
+      <div className='title'>
         <input
-          className="title-box"
-          type="text"
-          placeholder="title"
+          className='title-box'
+          type='text'
+          placeholder='title'
           value={createNewPostState.title}
           onChange={(e) => handleClientInput(updateTitle, e.target.value)}
         />
       </div>
-      <div className="species">
+      <div className='species'>
         <input
-          className="species-box"
-          type="text"
-          placeholder="Name of the bird / Species"
+          className='species-box'
+          type='text'
+          placeholder='Name of the bird / Species'
           value={createNewPostState.birdName}
           onChange={(e) => handleClientInput(updateNameOfBird, e.target.value)}
         />
@@ -104,7 +103,47 @@ const CreateNewPost = () => {
           onChange={(e) => handleClientInput(updateTime, e.target.value)}
         />
       </div>
-      <button type="submit">Create Post</button>
+      <button
+        type='submit'
+        onClick={(e) => {
+          const username = '#1 Birder';
+          const postContent = document.querySelector('.textarea-box').value;
+          const birdName = document.querySelector('.species-box').value;
+          const location = document.querySelector('.location-box').value;
+          const weatherConditions =
+            document.querySelector('.weather-box').value;
+          const date = document.querySelector('.date-box').value;
+          const time = document.querySelector('.time-box').value;
+
+          fetch('http://localhost:3000/newpost', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username,
+              postContent,
+              birdName,
+              location,
+              weatherConditions,
+              date,
+              time,
+            }),
+          })
+            .then((results) => {
+              return results.json();
+            })
+            .then((json) => {
+              console.log(json);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }}
+      >
+        Create Post{' '}
+      </button>
     </form>
   );
 };
