@@ -28,24 +28,28 @@ const userSchema = new Schema({
 
 // comment schema;
 const commentSchema = new Schema({
-  username: { type: String, required: true },
+  // username: { type: String, required: true }, 
+  username_id: {
+		type: Schema.Types.ObjectId,
+		ref: 'user',
+	},
   comment: String
 });
 
 // user schema;
 const postSchema = new Schema({
-  // username: { type: String, required: true },
-  username_id: {
-		type: Schema.Types.ObjectId,
-		ref: 'user',
-	},
+  username: { type: String, required: true },
+  // username_id: {
+	// 	type: Schema.Types.ObjectId,
+	// 	ref: 'user',
+	// },
   // password: { type: String, required: true },
   textContent: String,
   birdName: String,
   dateStamp: String,
   location: String,
   weatherConditions: String,
-  comments: [commentSchema]
+  comments: [{ type: Schema.Types.ObjectId, ref: 'comment' }]
 });
 
 
