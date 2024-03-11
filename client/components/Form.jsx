@@ -9,7 +9,7 @@ const Form = () => {
 
   const signUpForm = () => (
     <div className='sign-up'>
-      <div className='sing-up-wrap'>
+      <div className='sign-up-wrap'>
         <h2 className='sign-up-text'>Sign Up</h2>
       </div>
       <form className='sign-up-form'>
