@@ -51,13 +51,14 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user',
   },
+                              
   // password: { type: String, required: true },
   textContent: String,
   birdName: String,
   dateStamp: String,
   location: String,
   weatherConditions: String,
-  comments: [commentSchema],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'comment' }]
 });
 
 const User = mongoose.model('user', userSchema);
