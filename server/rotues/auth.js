@@ -6,7 +6,7 @@ router.post('/signup', userController.createUser, (req, res) => {
   return res.status(200).json(res.locals.username);
 });
 
-router.get('/signin', userController.verifyUser, (req, res) => {
+router.post('/signin', userController.verifyUser, (req, res) => {
   return res.status(200).json(res.locals.username);
 });
 
