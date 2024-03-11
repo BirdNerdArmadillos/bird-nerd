@@ -6,20 +6,27 @@ import { useSelector } from 'react-redux';
 const PostContainer = () => {
   const posts = useSelector((state) => state.postContainer.posts);
 
-  const componentsArray = [];
-  posts.forEach((post, i) => {
-    componentsArray.push(
-      <Post
-        key={post._id}
-        user={post.user}
-        textContent={post.textContent}
-        datetime={post.datetime}
-        // TODO: add more props as necessary
-      />
-    );
-  });
+  // const componentsArray = [];
+  // posts.forEach((post, i) => {
+  //   componentsArray.push(
+  //     <Post
+  //       key={post._id}
+  //       user={post.user}
+  //       textContent={post.textContent}
+  //       datetime={post.datetime}
+  //       // TODO: add more props as necessary
+  //     />
+  //   );
+  // });
 
-  return <section>{componentsArray}</section>;
+  // return <section>{componentsArray}</section>;
+  return (
+    <section>
+      {posts.map((post) => (
+        <Post key={post._id} post={post} />
+      ))}
+    </section>
+  );
 };
 
 export default PostContainer;
