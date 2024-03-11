@@ -12,12 +12,12 @@ import {
 const CreateNewPost = () => {
   const dispatch = useDispatch();
   const createNewPostState = useSelector((state) => state.createNewPost);
-  
+
   const handleClientInput = (actionCreator, value) => {
     dispatch(actionCreator(value));
   };
-  
-  const handleSubmit = async(e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/newpost', {
@@ -28,62 +28,61 @@ const CreateNewPost = () => {
         body: JSON.stringify(createNewPostState),
       });
       if (!response.ok) {
-        throw new Error('Failed to create new post')
+        throw new Error('Failed to create new post');
       }
-      
-    }
+    } catch {}
   };
 
   return (
     <>
-      <div className="textarea">
+      <div className='textarea'>
         <textarea
-          className="textarea-box"
+          className='textarea-box'
           value={createNewPostState.body}
           onChange={(e) => handleClientInput(updateBody, e.target.value)}
         />
       </div>
-      <div className="species">
+      <div className='species'>
         <input
-          className="species-box"
-          type="text"
-          placeholder="Name of the bird / Species"
+          className='species-box'
+          type='text'
+          placeholder='Name of the bird / Species'
           value={createNewPostState.nameOfBird}
           onChange={(e) => handleClientInput(updateNameOfBird, e.target.value)}
         />
       </div>
-      <div className="location">
+      <div className='location'>
         <input
-          className="location-box"
-          type="text"
-          placeholder="Where did you see this bird?"
+          className='location-box'
+          type='text'
+          placeholder='Where did you see this bird?'
           value={createNewPostState.location}
           onChange={(e) => handleClientInput(updateLocation, e.target.value)}
         />
       </div>
-      <div className="weather">
+      <div className='weather'>
         <input
-          className="weather-box"
-          type="text"
-          placeholder="What wsa the weather like?"
+          className='weather-box'
+          type='text'
+          placeholder='What wsa the weather like?'
           value={createNewPostState.weather}
           onChange={(e) => handleClientInput(updateWeather, e.target.value)}
         />
       </div>
-      <div className="date">
+      <div className='date'>
         <input
-          className="date-box"
-          type="text"
-          placeholder="Date"
+          className='date-box'
+          type='text'
+          placeholder='Date'
           value={createNewPostState.date}
           onChange={(e) => handleClientInput(updateDate, e.target.value)}
         />
       </div>
-      <div className="time">
+      <div className='time'>
         <input
-          className="time-box"
-          type="text"
-          placeholder="Time"
+          className='time-box'
+          type='text'
+          placeholder='Time'
           value={createNewPostState.time}
           onChange={(e) => handleClientInput(updateTime, e.target.value)}
         />
