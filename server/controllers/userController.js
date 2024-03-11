@@ -13,7 +13,10 @@ userController.createUser = (req, res, next) => {
     });
   }
   User.create({ username, password })
-    .then(() => next())
+    .then((data) => {
+      res.locals.username = data.username;
+      next();
+    })
     .catch((err) => {
       return next({
         log: 'Error occurred in create user',
@@ -46,6 +49,7 @@ userController.verifyUser = (req, res, next) => {
         if (!result) {
           res.redirect('/signup');
         } else {
+          res.locals.username = username;
           return next();
         }
       });

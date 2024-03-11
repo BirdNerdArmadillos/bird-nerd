@@ -1,19 +1,13 @@
 const express = require('express');
 const userController = require('../controllers/userController');
 const router = express.Router();
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../client/slices/appSlice.js';
 
 router.post('/signup', userController.createUser, (req, res) => {
-  const dispatch = useDispatch();
-  dispatch(logIn('testuser'));
-  return res.status(200);
+  return res.status(200).json(res.locals.username);
 });
 
 router.get('/signin', userController.verifyUser, (req, res) => {
-  const dispatch = useDispatch();
-  dispatch(logIn('testuser'));
-  return res.status(200);
+  return res.status(200).json(res.locals.username);
 });
 
 module.exports = router;
