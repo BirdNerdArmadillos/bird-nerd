@@ -74,7 +74,7 @@ const CreateNewPost = () => {
         <input
           className='species-box'
           type='text'
-          placeholder='Name of the bird / Species'
+          placeholder='Bird Species'
           value={createNewPostState.birdName}
           onChange={(e) => handleClientInput(updateNameOfBird, e.target.value)}
         />
@@ -92,7 +92,7 @@ const CreateNewPost = () => {
         <input
           className='weather-box'
           type='text'
-          placeholder='What wsa the weather like?'
+          placeholder='What was the weather like?'
           value={createNewPostState.weather}
           onChange={(e) => handleClientInput(updateWeather, e.target.value)}
         />
