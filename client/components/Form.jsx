@@ -17,13 +17,13 @@ const Form = () => {
           className='sign-up-username'
           type='text'
           placeholder='Username'
-          required
+          // required={true}
         />
         <input
           className='sign-up-password'
           type='password'
           placeholder='Password'
-          require
+          // require={true}
         />
         <button
           className='sign-up-button'
@@ -33,8 +33,9 @@ const Form = () => {
             const password = document.querySelector('.sign-up-password').value;
             fetch('http://localhost:3000/auth/signup', {
               method: 'POST',
-              mode: 'cors',
+              mode: 'no-cors',
               headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({ username: username, password: password }),
@@ -69,13 +70,13 @@ const Form = () => {
           className='sign-in-username'
           type='text'
           placeholder='Username'
-          required
+          // required={true}
         />
         <input
           className='sign-in-password'
           type='password'
           placeholder='Password'
-          required
+          // required={true}
         />
         <button
           className='sign-in-button'
@@ -85,8 +86,9 @@ const Form = () => {
             const password = document.querySelector('.sign-in-password').value;
             fetch('http://localhost:3000/auth/signin', {
               method: 'POST',
-              mode: 'cors',
+              mode: 'no-cors',
               headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({ username: username, password: password }),
